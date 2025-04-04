@@ -1,0 +1,66 @@
+import cv2
+import time
+import math
+from ultralytics import YOLO
+
+# Load YOLO model
+model = YOLO('yolov8n.pt')  # Downloaded version needed
+cap = cv2.VideoCapture(0)
+
+speed = 0
+prev_center = None
+prev_time = None
+pixel_to_meter = 0.0002645833  
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    # Run YOLO detection
+    results = model(frame)
+    for result in results:
+        boxes = result.boxes.xyxy.cpu().numpy()
+        for box in boxes:
+            x1, y1, x2, y2 = map(int, box)
+            x_center = (x1 + x2) / 2
+            y_center = (y1 + y2) / 2
+            current_time = time.time()
+
+            if prev_center and prev_time:
+                dx = x_center - prev_center[0]
+                dy = y_center - prev_center[1]
+                dt = current_time - prev_time
+
+                distance = math.sqrt(dx**2 + dy**2) * pixel_to_meter
+                if dt>0:
+                    speed = distance / dt
+                else: 
+                    speed=0
+                print(f"Speed: {speed:.2f} m/s")
+
+                # Force estimation 
+                # Assume acceleration over 3 frames and known ball mass
+                mass = 0.45  # kg
+                if dt>0:
+                    acceleration = speed / dt
+                    force = mass * acceleration
+                    print(f"Force (approx): {force:.2f} N")
+                else:
+                    acceleration=0
+                    force = 0
+                    print("Insufficient time difference to calculate force.")
+
+            prev_center = (x_center, y_center)
+            prev_time = current_time
+
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0,255,0), 2)
+            cv2.putText(frame, f"{speed:.2f} m/s", (x1, y1 - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+
+    cv2.imshow("Live Tracker", frame)
+    if cv2.waitKey(1) == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
