@@ -1,4 +1,4 @@
-Player-Performance-Analysis
+**Player-Performance-Analysis**
 Python software is integrated into a camera. As the camera records a live feed, the software analyzes player performance based  on the pre-set parameters. The list of parameters that will determine players' performance.
 
 #Core computer-vision & deep learning
