@@ -1,4 +1,4 @@
-Player Performance Analysis Using Computer-Vision & Deep Learning
+**Player Performance Analysis Using Computer-Vision & Deep Learning**<br>
 Python software is integrated into a camera. As the camera records a live feed, the software analyzes player performance based  on the pre-set parameters. The list of parameters that will determine players' performance.
 Python software is integrated into a camera. As the camera records live feed, the software will analyze player performance based
 #on the pre-set parameters. The project is in the developing phase, therefore there are fewer parameters defined. But in the future, the list will be expanded to #meet the requirements of each game to analyze players. For now, for testing purposes, this project will measure the running speed of the players, the force #applied to kick/throw the ball or other materials like Javellion depending on the game:
