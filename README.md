@@ -6,46 +6,51 @@ Python software is integrated into a camera. As the camera records live feed, th
 #average speed: is the sum of instances of speeds in the game/number of instances
 2. Force=mass*acceleration
 
-**#Required installations**
-#!pip install opencv-python
-#!pip install ultralytics
+**Required installations** <br>
+i. Live camera feed, image/frame processing -->
+**!pip install opencv-python**
 
-# For array operations 
-#!pip install numpy
+ii. OLOv8 object detection (players/ball)  -->
+**!pip install ultralytics**
 
-# For pose estimation later
-#!pip install --user mediapipe
+iii. Mathematical calculations for speed, distance, etc.  -->
+**!pip install numpy**
 
-# TO Display real-time charts or logging
-#!pip install matplotlib pandas
+iv. For pose estimation later  -->
+**!pip install --user mediapipe**
 
-**#Verify Installation**
-#import cv2
-#print("OpenCV version:", cv2.__version__) 
-#Expected output: OpenCV version: 4.11.0 --> version may not same
+v. Plotting visual analytics  -->
+**!pip install matplotlib pandas**
 
-#import numpy as np
-#print("NumPy version:", np.__version__)
-#Expected output: NumPy version: 1.26.4 --> version may not same
+**Verify Installation**<br>
+**import cv2** <br>
+print("OpenCV version:", cv2.__version__) <br>
+**Expected output:** OpenCV version: 4.11.0 --> version may be different<br>
 
-#import matplotlib.pyplot as plt
-#print("Matplotlib is ready.")
-#Expected output: Matplotlib is ready.
+**import numpy as np**<br>
+print("NumPy version:", np.__version__)<br>
+#Expected output: NumPy version: 1.26.4 --> version may not same<br>
 
-#import pandas as pd
-#print("Pandas version:", pd.__version__)
-#Expected output: Pandas version: 2.2.2 --> version may not same
+**import matplotlib.pyplot as plt**<br>
+print("Matplotlib is ready.")<br>
+#Expected output: Matplotlib is ready.<br>
 
-#import torch
-#print(torch.__version__)
-#print("torch.load exists:", hasattr(torch, 'load'))
-#Expected output: '2.6.0+cpu
-#torch.load exists: True'
+**import pandas as pd**<br>
+print("Pandas version:", pd.__version__)<br>
+#Expected output: Pandas version: 2.2.2 --> version may not same<br>
 
-#from ultralytics import YOLO
-#print("Ultralytics (YOLOv8) is installed.")
-#Expected output: Ultralytics (YOLOv8) is installed.
+**import torch**<br>
+print(torch.__version__)<br>
+print("torch.load exists:", hasattr(torch, 'load'))<br>
+#Expected output: '2.6.0+cpu<br>
+#torch.load exists: True'<br>
 
-#import mediapipe as mp
-#print("MediaPipe is now working!")
-#Expected output: MediaPipe is now working!
+**from ultralytics import YOLO**<br>
+print("Ultralytics (YOLOv8) is installed.")<br>
+#Expected output: Ultralytics (YOLOv8) is installed.<br>
+
+**import mediapipe as mp**<br>
+print("MediaPipe is now working!")<br>
+#Expected output: MediaPipe is now working!<br>
+
+Once the environmnet is setup and necessary libraries are installed, go to Main_code file to find the pyhton code to analyze player performance.
